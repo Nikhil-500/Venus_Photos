@@ -1,0 +1,21 @@
+{
+  "name": "photo_back",
+  "version": "1.0.0",
+  "description": "Backend server for Muruli Photography website",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "nodemailer": "^7.0.10",
+    "twilio": "^5.10.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
