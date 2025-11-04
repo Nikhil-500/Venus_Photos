@@ -23,8 +23,8 @@ import re from "../assets/re.jpg";
 import pp1 from "../assets/pp1.jpg";
 import comm1 from "../assets/comm1.jpg";
 import ru2 from "../assets/ru2.jpg";
-import con1 from "../assets/con1.jpg";
-import lpt2 from "../assets/lpt2.jpg";
+import jan1 from "../assets/jan1.jpg";
+import ten2 from "../assets/ten2.jpg";
 import anu2 from "../assets/anu2.jpg";
 import mat from "../assets/mat.jpg";
 
@@ -37,7 +37,7 @@ const services = [
     title: "Architectural Photography",
     desc: "Capturing the design essence and structural beauty through creative perspectives.",
     link: "/services/architecture",
-    Image: lpt2,
+    Image: ten2,
   },
   {
     title: "Bridal / Wedding / Pre-Wedding Photography",
@@ -61,7 +61,7 @@ const services = [
     title: "Corporate Promotion",
     desc: "Highlighting business identity through modern, professional photography.",
     link: "/services/corporate-promotion",
-    Image: con1,
+    Image: jan1,
   },
   {
     title: "Traditional Events",
