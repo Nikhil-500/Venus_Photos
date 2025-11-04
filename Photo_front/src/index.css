@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🎨 Global Theme Variables */
+:root {
+  --purple: #7b2cbf; /* Main accent color */
+  --dark-bg: #0a0a0a; /* Global dark background */
+}
+
+/* 🌙 Global Body Styles */
+body {
+  background-color: var(--dark-bg);
+  color: #e5e5e5;
+  font-family: 'Inter', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 🔗 Links */
+a {
+  @apply text-gray-300 hover:text-[var(--purple)] transition-colors duration-200;
+  text-decoration: none;
+}
+
+/* 🌐 Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ✨ Text Selection */
+::selection {
+  background-color: var(--purple);
+  color: white;
+}
+
+/* 🔘 Buttons */
+button {
+  @apply focus:outline-none focus:ring-2;
+  --tw-ring-color: var(--purple);
+}
+
+/* 🧾 Form Inputs */
+input,
+select,
+textarea {
+  @apply bg-gray-800 border border-gray-700 text-gray-100 rounded-md 
+         focus:ring-2 focus:ring-[var(--purple)] focus:border-[var(--purple)];
+  outline: none;
+}
+
+/* 🧭 Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply text-white;
+  font-family: 'Inter', sans-serif;
+}
+/* Prevent horizontal scroll */
+html, body {
+  overflow-x: hidden;
+}
