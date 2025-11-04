@@ -41,6 +41,7 @@ import FAQ from "./pages/FAQ";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import PaymentCancellation from "./pages/PaymentCancellation";
 import Pricing from "./pages/Pricing";
+import Blog from "./pages/Blog";
 //Insta and whatsapp
 import InstagramIcon from "./components/InstagramIcon";
 import FacebookIcon from "./components/FacebookIcon";
@@ -101,6 +102,7 @@ export default function App() {
                 element={<PaymentCancellation />}
               />
               <Route path="/pricing" element={<Pricing />} />
+              <Route path="/blog" element={<Blog />} />
 
               {/* --- 404 Fallback --- */}
               <Route
