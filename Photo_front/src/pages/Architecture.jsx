@@ -29,7 +29,7 @@ export default function Architecture() {
   const [selectedImage, setSelectedImage] = useState(null);
 
   // ✅ Hero slider images
-  const sliderImages = [architectureImg,res1, com2, in3, ex3];
+  const sliderImages = [architectureImg,res1, ten2, in3, ex3];
 
   // ✅ Categories
   const categories = {
