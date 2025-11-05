@@ -34,7 +34,7 @@ export default function Architecture() {
   // ✅ Categories
   const categories = {
     "Residential": [res, res1, res2, res3],
-    "Commercial": [lpt, lpt1, lpt2, lpt3],
+    "Commercial": [ten, ten1, ten2, ten3],
     "Interiors": [in1, in2, in3, in4],
     "Exteriors": [ex, ex1, ex2, ex3],
   };
