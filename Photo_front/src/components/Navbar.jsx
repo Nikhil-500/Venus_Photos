@@ -16,6 +16,7 @@ export default function Navbar() {
     { name: "Services", to: "/services" },
     {
       name: "Packages",
+      to: "/packages",
       dropdown: [
         { name: "Wedding Package", to: "/packages/wedding" },
         { name: "Drone Package", to: "/packages/drone" },
@@ -25,6 +26,7 @@ export default function Navbar() {
         { name: "Maternity & Newborn Package", to: "/packages/maternity-newborn" },
       ],
     },
+
     { name: "Contact", to: "/contact" },
     { name: "Book Now", to: "/booknow" },
   ];
@@ -45,9 +47,8 @@ export default function Navbar() {
       initial={{ y: -60, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed w-full top-0 left-0 z-50 transition-all duration-500 ${
-        scrolled ? "bg-black/80 backdrop-blur-md shadow-md" : "bg-transparent"
-      }`}
+      className={`fixed w-full top-0 left-0 z-50 transition-all duration-500 ${scrolled ? "bg-black/80 backdrop-blur-md shadow-md" : "bg-transparent"
+        }`}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
         {/* Logo */}
@@ -73,20 +74,18 @@ export default function Navbar() {
             >
               <Link
                 to={item.to || "#"}
-                className={`flex items-center gap-1 transition duration-200 ${
-                  location.pathname === item.to ||
-                  location.pathname.startsWith(item.to + "/")
+                className={`flex items-center gap-1 transition duration-200 ${location.pathname === item.to ||
+                    location.pathname.startsWith(item.to + "/")
                     ? "text-purple-400"
                     : "text-gray-200 hover:text-purple-400"
-                }`}
+                  }`}
               >
                 {item.name}
                 {item.dropdown && (
                   <ChevronDown
                     size={16}
-                    className={`transition-transform ${
-                      activeDropdown === item.name ? "rotate-180" : ""
-                    }`}
+                    className={`transition-transform ${activeDropdown === item.name ? "rotate-180" : ""
+                      }`}
                   />
                 )}
               </Link>
@@ -165,11 +164,10 @@ export default function Navbar() {
                         ? setActiveDropdown(activeDropdown === item.name ? null : item.name)
                         : setOpen(false)
                     }
-                    className={`w-full flex justify-between items-center text-[16px] font-medium py-2 border-b border-purple-800/30 ${
-                      location.pathname === item.to
+                    className={`w-full flex justify-between items-center text-[16px] font-medium py-2 border-b border-purple-800/30 ${location.pathname === item.to
                         ? "text-purple-400"
                         : "text-gray-200 hover:text-purple-400"
-                    }`}
+                      }`}
                   >
                     <Link to={item.to || "#"} className="flex-1 text-left">
                       {item.name}
@@ -177,11 +175,10 @@ export default function Navbar() {
                     {item.dropdown && (
                       <ChevronRight
                         size={18}
-                        className={`transition-transform ${
-                          activeDropdown === item.name
+                        className={`transition-transform ${activeDropdown === item.name
                             ? "rotate-90 text-purple-400"
                             : "text-purple-400/60"
-                        }`}
+                          }`}
                       />
                     )}
                   </button>

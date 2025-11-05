@@ -33,7 +33,7 @@ export default function BookForm({ selectedPackage = "" }) {
 
   // ✅ WhatsApp message link generator
   const generateWhatsAppMessage = () => {
-    const whatsappNumber = "+919035311565"; // 🔹 Muruli Raj's number
+    const whatsappNumber = "+1 (415) 523-8886"; // 🔹 Muruli Raj's number
     const message = `📸 *New Booking Request!*\n\n👤 Name: ${formData.name}\n📧 Email: ${formData.email}\n📞 Phone: ${formData.phone}\n🏛️ Venue: ${formData.venue}\n🧾 Service: ${formData.service}\n💎 Package: ${formData.package}\n💬 Message: ${formData.message || "N/A"}`;
     return `https://api.whatsapp.com/send?phone=${whatsappNumber.replace("+", "")}&text=${encodeURIComponent(message)}`;
   };
@@ -144,10 +144,15 @@ export default function BookForm({ selectedPackage = "" }) {
           required
         >
           <option value="">-- Select Service --</option>
-          <option>Wedding</option>
-          <option>Architecture</option>
-          <option>Cinematography</option>
-          <option>Drone Shoot</option>
+          <option>Architecture Photography</option>
+          <option>Bridal/Pre-Wedding/Wedding Photography</option>
+          <option>Political Promotion</option>
+           <option>Government Projects</option>
+          <option>Corporate Promotions</option>
+          <option>Traditional Events</option>
+          <option>Model and Fashion Photography</option>
+          <option>School Promotions</option>
+          <option>Maternity, Newborn and Toddler</option>
         </select>
 
         {/* ✅ Venue Field */}
