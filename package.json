@@ -1,0 +1,12 @@
+{
+  "name": "venus_photos_fullstack",
+  "version": "1.0.0",
+  "scripts": {
+    "install": "cd Photo_back && npm install && cd ../Photo_front && npm install",
+    "build": "cd Photo_front && npm run build",
+    "start": "cd Photo_back && node index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
