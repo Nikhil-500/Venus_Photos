@@ -4,7 +4,7 @@
   "scripts": {
     "install": "cd Photo_back && npm install && cd ../Photo_front && npm install",
     "build": "cd Photo_front && npm run build",
-    "start": "cd Photo_back && node index.js"
+    "start": "cd Photo_back && node src/index.js"
   },
   "engines": {
     "node": ">=18"
