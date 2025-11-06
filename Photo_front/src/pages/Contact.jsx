@@ -223,7 +223,7 @@ export default function Contact() {
                 571234
               </p>
               <p className="text-gray-400">
-                📞 +91 9035311565 &nbsp; | &nbsp; ✉️ muruliraj5@gmail.com
+                📞 +91 9480661565 &nbsp; | &nbsp; ✉️ info@murulirajclicks.com
               </p>
               <p className="text-gray-500 text-sm mt-1">Mon – Sat, 9 AM – 6 PM</p>
             </div>

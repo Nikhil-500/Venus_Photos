@@ -48,7 +48,6 @@ export default function CorporatePromotion() {
     return () => clearInterval(timer);
   }, []);
 
-  // ✅ Navigate correctly (fix)
   const handleBookNow = () => {
     navigate("/booknow");
     setTimeout(() => window.scrollTo(0, 0), 200);
@@ -58,8 +57,8 @@ export default function CorporatePromotion() {
     selectedCategory === "Show All" ? allImages : categories[selectedCategory] || [];
 
   const { scrollYProgress } = useScroll();
-
   const currentIndex = displayedImages.indexOf(selectedImage);
+
   const showPrev = (e) => {
     e.stopPropagation();
     setSelectedImage(
@@ -75,7 +74,7 @@ export default function CorporatePromotion() {
 
   return (
     <section className="relative bg-black text-white overflow-hidden">
-      {/* Scroll bar */}
+      {/* Scroll Progress Bar */}
       <motion.div
         style={{ scaleX: scrollYProgress }}
         className="fixed top-0 left-0 right-0 h-1 bg-purple-500 origin-left z-[999]"
@@ -121,58 +120,7 @@ export default function CorporatePromotion() {
         </div>
       </div>
 
-      {/* --- Categories --- */}
-      <AnimatedSection>
-        <div className="max-w-7xl mx-auto px-6 py-20 text-center">
-          <div className="flex flex-wrap justify-center gap-4 mb-10 border-b border-gray-700 pb-4">
-            {["Show All", ...Object.keys(categories)].map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={`px-5 py-2 text-sm font-semibold rounded-md transition-all duration-300 ${
-                  selectedCategory === cat
-                    ? "bg-purple-600 text-white"
-                    : "bg-transparent text-gray-400 hover:text-white hover:bg-purple-500/30"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-
-          {/* --- Gallery --- */}
-          <motion.div
-            layout
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
-          >
-            <AnimatePresence>
-              {displayedImages.map((img, i) => (
-                <motion.div
-                  key={i}
-                  layout
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.3 }}
-                  className="relative overflow-hidden rounded-xl group shadow-lg hover:shadow-purple-600/40 cursor-pointer"
-                  onClick={() => setSelectedImage(img)}
-                >
-                  <img
-                    src={img}
-                    alt={`Corporate ${i}`}
-                    className="w-full h-[300px] object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
-                    <span className="text-white font-medium">View Image</span>
-                  </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </motion.div>
-        </div>
-      </AnimatedSection>
-
-      {/* --- Info Section --- */}
+      {/* --- Info Section (moved before gallery) --- */}
       <AnimatedSection>
         <div className="grid md:grid-cols-2 gap-10 items-center py-20 max-w-6xl mx-auto px-6">
           <motion.img
@@ -201,6 +149,58 @@ export default function CorporatePromotion() {
               Book Now
             </button>
           </div>
+        </div>
+      </AnimatedSection>
+
+      {/* --- Gallery & Categories (moved to end) --- */}
+      <AnimatedSection>
+        <div className="max-w-7xl mx-auto px-6 py-20 text-center">
+          {/* Category Buttons */}
+          <div className="flex flex-wrap justify-center gap-4 mb-10 border-b border-gray-700 pb-4">
+            {["Show All", ...Object.keys(categories)].map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={`px-5 py-2 text-sm font-semibold rounded-md transition-all duration-300 ${
+                  selectedCategory === cat
+                    ? "bg-purple-600 text-white"
+                    : "bg-transparent text-gray-400 hover:text-white hover:bg-purple-500/30"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          {/* Gallery Grid */}
+          <motion.div
+            layout
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
+          >
+            <AnimatePresence>
+              {displayedImages.map((img, i) => (
+                <motion.div
+                  key={i}
+                  layout
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.3 }}
+                  className="relative overflow-hidden rounded-xl group shadow-lg hover:shadow-purple-600/40 cursor-pointer"
+                  onClick={() => setSelectedImage(img)}
+                >
+                  <img
+                    src={img}
+                    alt={`Corporate ${i}`}
+                    className="w-full h-[300px] object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                    <span className="text-white font-medium">View Image</span>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
         </div>
       </AnimatedSection>
 

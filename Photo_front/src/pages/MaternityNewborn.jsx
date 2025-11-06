@@ -62,7 +62,7 @@ export default function MaternityNewborn() {
     e.stopPropagation();
     setSelectedImage(
       displayedImages[
-        (currentIndex - 1 + displayedImages.length) % displayedImages.length
+      (currentIndex - 1 + displayedImages.length) % displayedImages.length
       ]
     );
   };
@@ -73,6 +73,7 @@ export default function MaternityNewborn() {
 
   return (
     <section className="relative bg-black text-white overflow-hidden">
+      {/* --- Scroll Progress Bar --- */}
       <motion.div
         style={{ scaleX: scrollYProgress }}
         className="fixed top-0 left-0 right-0 h-1 bg-purple-500 origin-left z-[999]"
@@ -103,7 +104,36 @@ export default function MaternityNewborn() {
         </div>
       </div>
 
-      {/* --- Category & Gallery --- */}
+      {/* --- Content & Book Now --- */}
+      <AnimatedSection>
+        <div className="grid md:grid-cols-2 gap-10 items-center py-20 max-w-6xl mx-auto px-6">
+          <motion.img
+            src={ted5}
+            alt="Maternity Shoot"
+            className="rounded-2xl shadow-2xl object-cover w-full h-[400px]"
+          />
+          <div>
+            <h3 className="text-2xl font-semibold mb-3 text-accent">
+              Cherish Every Precious Moment
+            </h3>
+            <p className="text-gray-300 mb-4 leading-relaxed">
+              From the gentle glow of maternity warmth to the innocent smiles of newborns,
+              we craft emotional stories that celebrate love, life, and togetherness. Each
+              photograph captures the tender moments, the laughter, and the unspoken bonds
+              that make your family truly unique — turning fleeting memories into timeless
+              treasures through elegant and heartfelt imagery.
+            </p>
+            <button
+              onClick={handleBookNow}
+              className="px-6 py-3 bg-accent text-white rounded-full font-semibold hover:bg-purple-700 transition"
+            >
+              Book Now
+            </button>
+          </div>
+        </div>
+      </AnimatedSection>
+
+      {/* --- Category & Gallery (Moved to End) --- */}
       <AnimatedSection>
         <div className="max-w-7xl mx-auto px-6 py-20 text-center">
           <div className="flex flex-wrap justify-center gap-4 mb-10 border-b border-gray-700 pb-4">
@@ -111,11 +141,10 @@ export default function MaternityNewborn() {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-5 py-2 text-sm font-semibold rounded-md transition-all duration-300 ${
-                  selectedCategory === cat
+                className={`px-5 py-2 text-sm font-semibold rounded-md transition-all duration-300 ${selectedCategory === cat
                     ? "bg-purple-600 text-white"
                     : "bg-transparent text-gray-400 hover:text-white hover:bg-purple-500/30"
-                }`}
+                  }`}
               >
                 {cat}
               </button>
@@ -144,32 +173,6 @@ export default function MaternityNewborn() {
               </motion.div>
             ))}
           </motion.div>
-        </div>
-      </AnimatedSection>
-
-      {/* --- Book Now --- */}
-      <AnimatedSection>
-        <div className="grid md:grid-cols-2 gap-10 items-center py-20 max-w-6xl mx-auto px-6">
-          <motion.img
-            src={ted5}
-            alt="Maternity Shoot"
-            className="rounded-2xl shadow-2xl object-cover w-full h-[400px]"
-          />
-          <div>
-            <h3 className="text-2xl font-semibold mb-3 text-accent">
-              Cherish Every Precious Moment
-            </h3>
-            <p className="text-gray-300 mb-4 leading-relaxed">
-              From maternity warmth to newborn smiles, we craft emotional
-              stories through elegant and heartfelt imagery.
-            </p>
-            <button
-              onClick={handleBookNow}
-              className="px-6 py-3 bg-accent text-white rounded-full font-semibold hover:bg-purple-700 transition"
-            >
-              Book Now
-            </button>
-          </div>
         </div>
       </AnimatedSection>
 

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import AnimatedSection from "../components/AnimatedSection";
 import Pagex from "../components/Pagex";
 
-// ✅ Local assets (replace with your actual images)
+// ✅ Local assets
 import govHero from "../assets/govHero.jpg";
 import infra1 from "../assets/infra1.jpg";
 import infra2 from "../assets/infra2.jpg";
@@ -66,9 +66,12 @@ export default function GovernmentProjects() {
       ]
     );
   };
+
   const showNext = (e) => {
     e.stopPropagation();
-    setSelectedImage(displayedImages[(currentIndex + 1) % displayedImages.length]);
+    setSelectedImage(
+      displayedImages[(currentIndex + 1) % displayedImages.length]
+    );
   };
 
   return (
@@ -93,6 +96,7 @@ export default function GovernmentProjects() {
             transition={{ duration: 1.2 }}
           />
         </AnimatePresence>
+
         <div className="absolute inset-0 bg-black/70" />
         <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6">
           <h1 className="text-5xl md:text-6xl font-bold text-purple-400 mb-4">
@@ -105,7 +109,41 @@ export default function GovernmentProjects() {
         </div>
       </div>
 
-      {/* --- Category Buttons & Gallery --- */}
+      {/* --- Info & Book Now Section (Moved Before Gallery) --- */}
+      <AnimatedSection>
+        <div className="grid md:grid-cols-2 gap-10 items-center py-20 max-w-6xl mx-auto px-6">
+          <motion.img
+            src={govHero}
+            alt="Government Project"
+            className="rounded-2xl shadow-2xl object-cover w-full h-[400px]"
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.4 }}
+          />
+          <div>
+            <h3 className="text-2xl font-semibold mb-3 text-purple-400">
+              Documenting Progress & Purpose
+            </h3>
+            <p className="text-gray-300 mb-4 leading-relaxed">
+              From rural development programs to national campaigns, our lens captures
+              every impactful story of progress and transformation. Each project
+              highlights innovation, unity, and the power of collective change.
+            </p>
+            <p className="text-gray-300 mb-6 leading-relaxed">
+              We believe that every government initiative deserves to be showcased
+              with clarity, pride, and professionalism — reflecting the nation’s
+              progress through compelling visuals.
+            </p>
+            <button
+              onClick={handleBookNow}
+              className="px-6 py-3 bg-purple-600 text-white rounded-full font-semibold hover:bg-purple-700 transition"
+            >
+              Book Now
+            </button>
+          </div>
+        </div>
+      </AnimatedSection>
+
+      {/* --- Gallery & Category Section (Moved to End) --- */}
       <AnimatedSection>
         <div className="max-w-7xl mx-auto px-6 py-20 text-center">
           {/* Category Buttons */}
@@ -134,9 +172,10 @@ export default function GovernmentProjects() {
               <motion.div
                 key={i}
                 layout
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.3 }}
                 className="relative overflow-hidden rounded-xl group shadow-lg hover:shadow-purple-600/40 transition-all duration-300 cursor-pointer"
                 onClick={() => setSelectedImage(img)}
               >
@@ -145,37 +184,12 @@ export default function GovernmentProjects() {
                   alt={`Gallery ${i + 1}`}
                   className="w-full h-[300px] object-cover group-hover:scale-110 transition-transform duration-700"
                 />
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                  <span className="text-white font-medium">View Image</span>
+                </div>
               </motion.div>
             ))}
           </motion.div>
-        </div>
-      </AnimatedSection>
-
-      {/* --- Book Now Section --- */}
-      <AnimatedSection>
-        <div className="grid md:grid-cols-2 gap-10 items-center py-20 max-w-6xl mx-auto px-6">
-          <motion.img
-            src={govHero}
-            alt="Government Project"
-            className="rounded-2xl shadow-2xl object-cover w-full h-[400px]"
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.4 }}
-          />
-          <div>
-            <h3 className="text-2xl font-semibold mb-3 text-accent">
-              Documenting Progress & Purpose
-            </h3>
-            <p className="text-gray-300 mb-4 leading-relaxed">
-              From rural development programs to national campaigns, our lens captures
-              every impactful story of progress and transformation.
-            </p>
-            <button
-              onClick={handleBookNow}
-              className="px-6 py-3 bg-accent text-white rounded-full font-semibold hover:bg-purple-700 transition"
-            >
-              Book Now
-            </button>
-          </div>
         </div>
       </AnimatedSection>
 
@@ -193,7 +207,13 @@ export default function GovernmentProjects() {
               src={selectedImage}
               alt="Selected"
               className="max-h-[90vh] max-w-[90vw] rounded-xl shadow-2xl object-contain"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.3 }}
             />
+
+            {/* Prev / Next */}
             <button
               onClick={showPrev}
               className="absolute left-6 text-white text-4xl font-bold hover:text-purple-400"
@@ -206,9 +226,11 @@ export default function GovernmentProjects() {
             >
               ›
             </button>
+
+            {/* Close */}
             <button
               onClick={() => setSelectedImage(null)}
-              className="absolute top-6 right-8 text-white text-3xl font-bold hover:text-purple-400"
+              className="absolute top-6 right-8 text-white text-3xl font-bold hover:text-purple-400 transition"
             >
               ×
             </button>

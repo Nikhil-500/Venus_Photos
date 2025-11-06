@@ -136,7 +136,41 @@ export default function Wedding() {
         </div>
       </div>
 
-      {/* --- Wedding Gallery Section --- */}
+      {/* --- Wedding Info Section (before gallery) --- */}
+      <AnimatedSection>
+        <div className="grid md:grid-cols-2 gap-10 items-center py-20 max-w-6xl mx-auto px-6">
+          <motion.img
+            src={weddingImg}
+            alt="Wedding Photography"
+            className="rounded-2xl shadow-2xl object-cover w-full h-[400px]"
+            whileHover={{ scale: 1.03 }}
+            transition={{ duration: 0.5 }}
+          />
+
+          <div>
+            <h3 className="text-2xl font-semibold mb-3 text-accent">
+              Celebrate Every Emotion
+            </h3>
+            <p className="text-textMut mb-4 leading-relaxed">
+              From the nervous laughter before the vows to the tears of joy
+              during the ceremony, our photography captures every genuine
+              emotion in cinematic detail.
+            </p>
+            <p className="text-textMut mb-6 leading-relaxed">
+              Our goal is to make you relive your special day each time you look
+              at your photos — elegant, timeless, and truly personal.
+            </p>
+            <button
+              onClick={handleBookNow}
+              className="px-6 py-3 bg-accent text-white rounded-full font-semibold hover:bg-purple-700 transition"
+            >
+              Book Now
+            </button>
+          </div>
+        </div>
+      </AnimatedSection>
+
+      {/* --- Wedding Gallery Section (moved below) --- */}
       <AnimatedSection>
         <div className="max-w-7xl mx-auto px-6 py-20 text-center">
           {/* Category Buttons */}
@@ -185,40 +219,6 @@ export default function Wedding() {
               ))}
             </AnimatePresence>
           </motion.div>
-        </div>
-      </AnimatedSection>
-
-      {/* --- Wedding Info Section (after gallery) --- */}
-      <AnimatedSection>
-        <div className="grid md:grid-cols-2 gap-10 items-center py-20 max-w-6xl mx-auto px-6">
-          <motion.img
-            src={weddingImg}
-            alt="Wedding Photography"
-            className="rounded-2xl shadow-2xl object-cover w-full h-[400px]"
-            whileHover={{ scale: 1.03 }}
-            transition={{ duration: 0.5 }}
-          />
-
-          <div>
-            <h3 className="text-2xl font-semibold mb-3 text-accent">
-              Celebrate Every Emotion
-            </h3>
-            <p className="text-textMut mb-4 leading-relaxed">
-              From the nervous laughter before the vows to the tears of joy
-              during the ceremony, our photography captures every genuine
-              emotion in cinematic detail.
-            </p>
-            <p className="text-textMut mb-6 leading-relaxed">
-              Our goal is to make you relive your special day each time you look
-              at your photos — elegant, timeless, and truly personal.
-            </p>
-            <button
-              onClick={handleBookNow}
-              className="px-6 py-3 bg-accent text-white rounded-full font-semibold hover:bg-purple-700 transition"
-            >
-              Book Now
-            </button>
-          </div>
         </div>
       </AnimatedSection>
 

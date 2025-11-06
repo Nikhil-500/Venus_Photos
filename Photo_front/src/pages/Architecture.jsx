@@ -29,14 +29,14 @@ export default function Architecture() {
   const [selectedImage, setSelectedImage] = useState(null);
 
   // ✅ Hero slider images
-  const sliderImages = [architectureImg,res1, ten2, in3, ex3];
+  const sliderImages = [architectureImg, res1, ten2, in3, ex3];
 
   // ✅ Categories
   const categories = {
-    "Residential": [res, res1, res2, res3],
-    "Commercial": [ten, ten1, ten2, ten3],
-    "Interiors": [in1, in2, in3, in4],
-    "Exteriors": [ex, ex1, ex2, ex3],
+    Residential: [res, res1, res2, res3],
+    Commercial: [ten, ten1, ten2, ten3],
+    Interiors: [in1, in2, in3, in4],
+    Exteriors: [ex, ex1, ex2, ex3],
   };
 
   // Combine all images for "Show All"
@@ -71,7 +71,9 @@ export default function Architecture() {
   };
   const showNext = (e) => {
     e.stopPropagation();
-    setSelectedImage(displayedImages[(currentIndex + 1) % displayedImages.length]);
+    setSelectedImage(
+      displayedImages[(currentIndex + 1) % displayedImages.length]
+    );
   };
 
   return (
@@ -116,12 +118,47 @@ export default function Architecture() {
             transition={{ delay: 0.3, duration: 1 }}
             className="text-gray-300 max-w-2xl text-lg leading-relaxed drop-shadow-md"
           >
-            Where structure meets art — capturing the essence of design, geometry, and light.
+            Where structure meets art — capturing the essence of design,
+            geometry, and light.
           </motion.p>
         </div>
       </div>
 
-      {/* --- Gallery Section --- */}
+      {/* --- Info Section (Moved before Gallery) --- */}
+      <AnimatedSection>
+        <div className="grid md:grid-cols-2 gap-10 items-center py-20 max-w-6xl mx-auto px-6">
+          <motion.img
+            src={architectureImg}
+            alt="Architecture Photography"
+            className="rounded-2xl shadow-2xl object-cover w-full h-[400px]"
+            whileHover={{ scale: 1.03 }}
+            transition={{ duration: 0.5 }}
+          />
+
+          <div>
+            <h3 className="text-2xl font-semibold mb-3 text-purple-400">
+              Framing Design & Light
+            </h3>
+            <p className="text-gray-300 mb-4 leading-relaxed">
+              We highlight the beauty of structures through geometry,
+              perspective, and the magic of light. From historic landmarks to
+              modern buildings — every detail is captured with purpose.
+            </p>
+            <p className="text-gray-300 mb-6 leading-relaxed">
+              Our goal is to make each photograph tell a story of architectural
+              excellence — elegant, powerful, and timeless.
+            </p>
+            <button
+              onClick={handleBookNow}
+              className="px-6 py-3 bg-purple-600 text-white rounded-full font-semibold hover:bg-purple-700 transition"
+            >
+              Book Now
+            </button>
+          </div>
+        </div>
+      </AnimatedSection>
+
+      {/* --- Gallery Section (Moved to End) --- */}
       <AnimatedSection>
         <div className="max-w-7xl mx-auto px-6 py-20 text-center">
           {/* Category Buttons */}
@@ -170,38 +207,6 @@ export default function Architecture() {
               ))}
             </AnimatePresence>
           </motion.div>
-        </div>
-      </AnimatedSection>
-
-      {/* --- Info Section --- */}
-      <AnimatedSection>
-        <div className="grid md:grid-cols-2 gap-10 items-center py-20 max-w-6xl mx-auto px-6">
-          <motion.img
-            src={architectureImg}
-            alt="Architecture Photography"
-            className="rounded-2xl shadow-2xl object-cover w-full h-[400px]"
-            whileHover={{ scale: 1.03 }}
-            transition={{ duration: 0.5 }}
-          />
-
-          <div>
-            <h3 className="text-2xl font-semibold mb-3 text-accent">
-              Framing Design & Light
-            </h3>
-            <p className="text-textMut mb-4 leading-relaxed">
-              We highlight the beauty of structures through geometry, perspective, and the magic of light. 
-              From historic landmarks to modern buildings — every detail is captured with purpose.
-            </p>
-            <p className="text-textMut mb-6 leading-relaxed">
-              Our goal is to make each photograph tell a story of architectural excellence — elegant, powerful, and timeless.
-            </p>
-            <button
-              onClick={handleBookNow}
-              className="px-6 py-3 bg-accent text-white rounded-full font-semibold hover:bg-purple-700 transition"
-            >
-              Book Now
-            </button>
-          </div>
         </div>
       </AnimatedSection>
 

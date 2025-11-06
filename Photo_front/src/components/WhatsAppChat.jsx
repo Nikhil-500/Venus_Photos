@@ -6,7 +6,7 @@ export default function WhatsAppChat() {
   const [open, setOpen] = useState(false);
   const [showGreeting, setShowGreeting] = useState(false);
 
-  const whatsappNumber = "+917904972933"; // 🔹 Replace with your number
+  const whatsappNumber = "+919480661565"; // 🔹 Replace with your number
   const baseLink = `https://api.whatsapp.com/send?phone=${whatsappNumber.replace("+", "")}`;
 
   const quickMessages = [

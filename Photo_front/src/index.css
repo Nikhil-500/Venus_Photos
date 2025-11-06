@@ -4,15 +4,17 @@
 
 /* 🎨 Global Theme Variables */
 :root {
-  --purple: #7b2cbf; /* Main accent color */
-  --dark-bg: #0a0a0a; /* Global dark background */
+  --purple: #7b2cbf; /* Accent */
+  --dark-bg: #0a0a0a; /* Background */
 }
 
 /* 🌙 Global Body Styles */
 body {
   background-color: var(--dark-bg);
   color: #e5e5e5;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.05em;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -20,6 +22,7 @@ body {
 a {
   @apply text-gray-300 hover:text-[var(--purple)] transition-colors duration-200;
   text-decoration: none;
+  letter-spacing: 0.1em;
 }
 
 /* 🌐 Smooth Scroll */
@@ -37,6 +40,8 @@ html {
 button {
   @apply focus:outline-none focus:ring-2;
   --tw-ring-color: var(--purple);
+  font-family: 'Raleway', sans-serif;
+  letter-spacing: 0.05em;
 }
 
 /* 🧾 Form Inputs */
@@ -46,6 +51,7 @@ textarea {
   @apply bg-gray-800 border border-gray-700 text-gray-100 rounded-md 
          focus:ring-2 focus:ring-[var(--purple)] focus:border-[var(--purple)];
   outline: none;
+  font-family: 'Raleway', sans-serif;
 }
 
 /* 🧭 Headings */
@@ -55,10 +61,15 @@ h3,
 h4,
 h5,
 h6 {
-  @apply text-white;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: white;
 }
+
 /* Prevent horizontal scroll */
-html, body {
+html,
+body {
   overflow-x: hidden;
 }

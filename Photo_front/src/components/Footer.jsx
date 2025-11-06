@@ -6,11 +6,13 @@ import {
   FaWhatsapp,
   FaPinterestP,
   FaBehance,
+  FaYoutube,
+  FaGoogle,
 } from "react-icons/fa";
 
 export default function Footer() {
   const year = new Date().getFullYear();
-  const whatsappNumber = "+919999888777";
+  const whatsappNumber = "9480661565";
   const [isVisible, setIsVisible] = useState(false);
 
   // ✅ Scroll button visibility
@@ -37,102 +39,219 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10 text-center md:text-left">
         {/* --- Left Section --- */}
         <div>
-          <h3 className="text-purple-400 font-semibold text-lg mb-3">
+          <h3 className="text-purple-400 font-semibold text-lg mb-3 uppercase">
             Muruliraj Photography
           </h3>
+
           <p className="text-gray-300 text-sm leading-relaxed text-center md:text-left">
-            Experience the artistry of Wedding and reflects elegance,
-            precision, and emotic professional finesse and creative excell.
+            Experience the artistry of wedding photography that reflects
+            elegance, precision, and emotional depth with creative excellence.
           </p>
 
           <div className="mt-3">
             <a
-              href={`tel:${whatsappNumber}`}
+              href={`https://wa.me/${whatsappNumber}`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="block text-purple-400 font-semibold hover:text-purple-300"
             >
-              {whatsappNumber}
+              +91 {whatsappNumber}
             </a>
             <a
-              href="mailto:muruliraj5@gmail.com"
-              className="text-sm text-purple-400 hover:text-purple-300"
+              href="mailto:info@murulirajclicks.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block text-sm text-purple-400 hover:text-purple-300"
             >
-              muruliraj5@gmail.com
+              info@murulirajclicks.com
             </a>
           </div>
 
-          {/* --- Social Icons --- */}
-          <div className="flex justify-center md:justify-start gap-4 mt-4 text-lg">
+          {/* ✅ Social Icons */}
+          <div className="flex justify-start gap-5 mt-4 text-lg text-gray-300">
             <a
-              href={`https://wa.me/${whatsappNumber.replace("+", "")}`}
+              href={`https://wa.me/${whatsappNumber}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-purple-400 transition"
+              className="hover:text-purple-400 transition transform hover:scale-110"
             >
               <FaWhatsapp />
             </a>
             <a
-              href="https://facebook.com"
+              href="https://www.facebook.com/murulirajclicks/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-purple-400 transition"
+              className="hover:text-purple-400 transition transform hover:scale-110"
             >
               <FaFacebookF />
             </a>
             <a
-              href="https://instagram.com/murulirajclicks"
+              href="https://www.instagram.com/murulirajclicks/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-purple-400 transition"
+              className="hover:text-purple-400 transition transform hover:scale-110"
             >
               <FaInstagram />
             </a>
             <a
-              href="https://pinterest.com"
+              href="https://in.pinterest.com/murulirajclicks/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-purple-400 transition"
+              className="hover:text-purple-400 transition transform hover:scale-110"
             >
               <FaPinterestP />
             </a>
             <a
-              href="https://behance.net"
+              href="https://www.behance.net/murulirajclicks"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-purple-400 transition"
+              className="hover:text-purple-400 transition transform hover:scale-110"
             >
               <FaBehance />
+            </a>
+            <a
+              href="https://www.youtube.com/@murulirajclicks"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-purple-400 transition transform hover:scale-110"
+            >
+              <FaYoutube />
+            </a>
+            <a
+              href="https://share.google/i9Pex0vd5G3sJ5vzs"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-purple-400 transition transform hover:scale-110"
+            >
+              <FaGoogle />
             </a>
           </div>
         </div>
 
         {/* --- Packages --- */}
         <div>
-          <h4 className="text-purple-400 font-semibold text-lg mb-3">
+          <h4 className="text-purple-400 font-semibold text-lg mb-3 uppercase">
             Packages
           </h4>
           <ul className="space-y-2 text-gray-300 text-sm">
-            <li>Wedding</li>
-            <li>Architecture</li>
-            <li>Corporate</li>
-            <li>Fashion</li>
-            <li>Events</li>
+            <li>
+              <Link to="/packages/wedding" className="hover:text-purple-400">
+                Wedding
+              </Link>
+            </li>
+            <li>
+              <Link to="/packages/drone" className="hover:text-purple-400">
+                Drone
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/packages/model-fashion"
+                className="hover:text-purple-400"
+              >
+                Model & Fashion
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/packages/traditional-events"
+                className="hover:text-purple-400"
+              >
+                Traditional Events
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/packages/school-promotion"
+                className="hover:text-purple-400"
+              >
+                School Promotion
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/packages/maternity-newborn"
+                className="hover:text-purple-400"
+              >
+                Maternity & Newborn
+              </Link>
+            </li>
           </ul>
         </div>
 
         {/* --- Quick Links --- */}
         <div>
-          <h4 className="text-purple-400 font-semibold text-lg mb-3">
+          <h4 className="text-purple-400 font-semibold text-lg mb-3 uppercase">
             Quick Links
           </h4>
           <ul className="space-y-2 text-gray-300 text-sm">
+            <li>
+              <Link
+                to="/services/architecture"
+                className="hover:text-purple-400"
+              >
+                Architecture
+              </Link>
+            </li>
             <li>
               <Link to="/services/wedding" className="hover:text-purple-400">
                 Wedding
               </Link>
             </li>
             <li>
-              <Link to="/services/architecture" className="hover:text-purple-400">
-                Architecture
+              <Link
+                to="/services/political-promotions" 
+                className="hover:text-purple-400"
+              >
+                Political Promotions
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/services/government-projects"
+                className="hover:text-purple-400"
+              >
+                Government Projects
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/services/corporate-promotion"
+                className="hover:text-purple-400"
+              >
+                Corporate Promotions
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/services/traditional-events"
+                className="hover:text-purple-400"
+              >
+                Traditional Events
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/services/model-fashion" 
+                className="hover:text-purple-400"
+              >
+                Model & Fashion
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/services/school-promotion" 
+                className="hover:text-purple-400"
+              >
+                School Promotion
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/services/maternity-newborn"
+                className="hover:text-purple-400"
+              >
+                Maternity and NewBorn
               </Link>
             </li>
             <li>
@@ -150,7 +269,9 @@ export default function Footer() {
 
         {/* --- Map Section --- */}
         <div>
-          <h4 className="text-purple-400 font-semibold text-lg mb-3">Find Us</h4>
+          <h4 className="text-purple-400 font-semibold text-lg mb-3 uppercase">
+            Find Us
+          </h4>
           <div className="w-full h-[200px] rounded-xl overflow-hidden border border-purple-500/40 shadow-lg">
             <iframe
               title="Muruliraj Photography Location"
@@ -185,7 +306,7 @@ export default function Footer() {
       </div>
 
       {/* --- Copyright --- */}
-      <div className="text-center text-gray-400 text-sm mt-3 border-t border-gray-700 pt-3">
+      <div className="text-center text-gray-400 text-sm mt-3">
         © {year} Muruliraj Photography. All Rights Reserved.
       </div>
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MessageCircle, Send, X } from "lucide-react";
+import { Send, X } from "lucide-react";
 
 export default function ChatBox() {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,25 +38,36 @@ export default function ChatBox() {
       {!isOpen ? (
         <button
           onClick={() => setIsOpen(true)}
-          className="bg-green-600 text-white rounded-full p-4 shadow-lg hover:bg-green-700 transition"
+          className="rounded-full p-4 shadow-xl transition transform hover:scale-110 bg-gradient-to-br from-green-500 to-green-600"
         >
-          <MessageCircle size={28} />
+          {/* ✅ Online WhatsApp logo (no upload needed) */}
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+            alt="WhatsApp"
+            className="w-8 h-8 object-contain"
+          />
         </button>
       ) : (
         <div className="bg-white shadow-2xl rounded-2xl w-80 h-96 flex flex-col border border-gray-200">
+          {/* Header */}
           <div className="bg-green-600 text-white p-3 flex justify-between items-center rounded-t-2xl">
             <span className="font-semibold">Chat with us</span>
-            <button onClick={() => setIsOpen(false)}>
+            <button
+              onClick={() => setIsOpen(false)}
+              className="hover:text-gray-200 transition"
+            >
               <X size={22} />
             </button>
           </div>
 
+          {/* Chat content */}
           <div className="flex-1 p-3 overflow-y-auto text-gray-800">
             <p className="text-sm text-gray-500 mb-2">
               👋 Hi! How can we help you today?
             </p>
           </div>
 
+          {/* Input area */}
           <div className="p-3 border-t flex items-center gap-2">
             <input
               type="text"
@@ -67,12 +78,13 @@ export default function ChatBox() {
             />
             <button
               onClick={sendMessage}
-              className="bg-green-600 text-white p-2 rounded-full hover:bg-green-700"
+              className="bg-green-600 text-white p-2 rounded-full hover:bg-green-700 transition"
             >
               <Send size={20} />
             </button>
           </div>
 
+          {/* Status messages */}
           {status === "sent" && (
             <p className="text-xs text-center text-green-600 pb-2">
               ✅ Message sent!

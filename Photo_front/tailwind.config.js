@@ -5,12 +5,13 @@ export default {
     extend: {
       colors: {
         purpleMain: "#7b2cbf",
-        darkBg: "#070707"
+        darkBg: "#070707",
       },
       fontFamily: {
-        display: ["Poppins", "Inter", "system-ui", "sans-serif"]
-      }
-    }
+        sans: ["Raleway", "sans-serif"],
+        heading: ["Raleway", "sans-serif"],
+      },
+    },
   },
-  plugins: []
+  plugins: [],
 };
