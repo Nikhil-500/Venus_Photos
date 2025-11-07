@@ -1,5 +1,4 @@
 // src/routes/contact.js
-// src/routes/contact.js
 import express from "express";
 import { handleContact } from "../controllers/contactController.js";
 

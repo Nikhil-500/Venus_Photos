@@ -6,25 +6,56 @@ const router = express.Router();
 
 /**
  * @route POST /api/whatsapp/send
- * @desc Send WhatsApp message from frontend
+ * @desc Send formatted WhatsApp message from frontend booking/contact form
  * @access Public
  */
 router.post("/send", async (req, res) => {
   try {
-    const { message } = req.body;
+    const {
+      name,
+      email,
+      phone,
+      venue,
+      service,
+      packageType,
+      message,
+    } = req.body;
 
-    if (!message) {
-      return res.status(400).json({ success: false, error: "Message text required" });
+    // 🧩 Basic validation
+    if (!name || !phone) {
+      return res.status(400).json({
+        success: false,
+        error: "Name and phone number are required.",
+      });
     }
 
-    // Send message to admin (you)
-    const adminPhone = process.env.ADMIN_PHONE || "+91XXXXXXXXXX";
-    await sendWhatsAppMessage(adminPhone, `💬 New website message:\n\n${message}`);
+    // 🧾 Format WhatsApp message nicely
+    const msgText = `
+📸 *New Booking/Contact Request!*
 
-    res.status(200).json({ success: true, message: "Message sent successfully!" });
+👤 *Name:* ${name}
+📧 *Email:* ${email || "Not provided"}
+📞 *Phone:* ${phone}
+🏛️ *Venue:* ${venue || "Not specified"}
+🧾 *Service:* ${service || "Not specified"}
+💎 *Package:* ${packageType || "Not specified"}
+💬 *Message:* ${message || "No message provided"}
+`;
+
+    // ✅ Send to admin’s WhatsApp
+    const adminPhone = process.env.ADMIN_PHONE || "+91XXXXXXXXXX"; // replace if needed
+    await sendWhatsAppMessage(adminPhone, msgText);
+
+    res.status(200).json({
+      success: true,
+      message: "✅ WhatsApp message sent successfully!",
+    });
   } catch (error) {
-    console.error("WhatsApp route error:", error.message);
-    res.status(500).json({ success: false, error: error.message });
+    console.error("❌ WhatsApp route error:", error);
+    res.status(500).json({
+      success: false,
+      error: "Server error while sending WhatsApp message.",
+    });
   }
 });
 

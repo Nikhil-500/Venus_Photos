@@ -3,16 +3,16 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import contactRoutes from "./routes/contact.js";
+import bookingRoutes from "./routes/booking.js"; // ✅ new
 import whatsappRoutes from "./routes/whatsapp.js";
 import path from "path";
 import { fileURLToPath } from "url";
-import chatRoutes from "./routes/chat.js";
 
 // Resolve file paths
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Load environment variables from root .env
+// Load environment variables
 dotenv.config({ path: path.join(__dirname, "../.env") });
 
 const app = express();
@@ -21,18 +21,17 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Routes
+// ✅ Routes
 app.use("/api/contact", contactRoutes);
+app.use("/api/booking", bookingRoutes); // ✅ new
 app.use("/api/whatsapp", whatsappRoutes);
-app.use("/api/chat", chatRoutes);
 
-
-// Root route (for quick server check)
+// Root route
 app.get("/", (req, res) => {
   res.send("Muruli Photo Backend API is running successfully...");
 });
 
-// Debug environment variable status
+// Debug environment variables
 console.log("🌱 Environment Variables Check:");
 [
   "EMAIL_USER",
@@ -46,7 +45,7 @@ console.log("🌱 Environment Variables Check:");
   console.log(`${key}:`, process.env[key] ? "Loaded" : "Missing")
 );
 
-// Global Error Handler
+// Global error handler
 app.use((err, req, res, next) => {
   console.error("Server Error:", err);
   res.status(500).json({ message: "Internal Server Error" });
@@ -55,5 +54,5 @@ app.use((err, req, res, next) => {
 // Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
