@@ -224,44 +224,10 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                to="/services/traditional-events"
-                className="hover:text-purple-400"
-              >
-                Traditional Events
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/services/model-fashion" 
-                className="hover:text-purple-400"
-              >
-                Model & Fashion
-              </Link>
-            </li>
-            <li>
-              <Link
                 to="/services/school-promotion" 
                 className="hover:text-purple-400"
               >
                 School Promotion
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/services/maternity-newborn"
-                className="hover:text-purple-400"
-              >
-                Maternity and NewBorn
-              </Link>
-            </li>
-            <li>
-              <Link to="/about" className="hover:text-purple-400">
-                About
-              </Link>
-            </li>
-            <li>
-              <Link to="/contact" className="hover:text-purple-400">
-                Contact
               </Link>
             </li>
           </ul>

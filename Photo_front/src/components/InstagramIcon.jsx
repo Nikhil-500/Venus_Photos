@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { FaInstagram } from "react-icons/fa";
 
 export default function InstagramIcon() {
-  const instagramLink = "https://www.instagram.com/muruliraj_photography";
+  const instagramLink = "https://www.instagram.com/murulirajclicks/";
 
   return (
     <motion.a

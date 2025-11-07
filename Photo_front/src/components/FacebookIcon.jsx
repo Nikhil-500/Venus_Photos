@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { FaFacebookF } from "react-icons/fa";
 
 export default function FacebookIcon() {
-  const facebookLink = "https://www.facebook.com/murulirajphotography";
+  const facebookLink = "https://www.facebook.com/murulirajclicks/";
 
   return (
     <motion.a
@@ -17,3 +17,4 @@ export default function FacebookIcon() {
     </motion.a>
   );
 }
+
