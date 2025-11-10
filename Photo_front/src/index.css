@@ -68,8 +68,70 @@ h6 {
   color: white;
 }
 
-/* Prevent horizontal scroll */
+/* 🧭 Prevent horizontal scroll */
 html,
 body {
   overflow-x: hidden;
+}
+
+/* 🌐 GOOGLE TRANSLATE FIXES */
+#google_translate_element,
+#google_translate_element_mobile {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: auto !important;
+}
+
+/* Dropdown style */
+#google_translate_element select,
+#google_translate_element_mobile select {
+  background-color: rgba(17, 17, 17, 0.8) !important;
+  color: #e5e5e5 !important;
+  border: 1px solid rgba(123, 44, 191, 0.6) !important;
+  border-radius: 6px !important;
+  padding: 6px 10px !important;
+  font-size: 14px !important;
+  font-family: 'Raleway', sans-serif !important;
+  outline: none !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+/* Hover effect for the dropdown */
+#google_translate_element select:hover,
+#google_translate_element_mobile select:hover {
+  background-color: rgba(123, 44, 191, 0.2) !important;
+  border-color: var(--purple) !important;
+}
+
+/* Hide Google branding & unwanted text */
+.goog-logo-link,
+.goog-te-gadget span,
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
+/* Prevent Google Translate bar from shifting content */
+body {
+  top: 0px !important;
+}
+
+/* Optional: Prevent white background flash on translation */
+.goog-te-menu-frame {
+  background: #0a0a0a !important;
+}
+.goog-te-menu2 {
+  background-color: #0a0a0a !important;
+  color: #e5e5e5 !important;
+  border: 1px solid rgba(123, 44, 191, 0.4) !important;
+}
+.goog-te-menu2-item div,
+.goog-te-menu2-item span {
+  color: #e5e5e5 !important;
+}
+.goog-te-menu2-item:hover div {
+  background-color: rgba(123, 44, 191, 0.2) !important;
 }

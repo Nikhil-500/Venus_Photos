@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Mail } from "lucide-react";
 
 export default function PrivacyPolicy() {
   const dataTypes = [
@@ -23,9 +24,7 @@ export default function PrivacyPolicy() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3 }}
       >
-        We value your privacy. Any information collected through this website —
-        such as contact details or submitted forms — will be kept strictly confidential
-        and used only for communication regarding our services.
+        We value your privacy. Any information collected through this website — such as contact details or submitted forms — will be kept strictly confidential and used only for communication regarding our services.
       </motion.p>
 
       <motion.div
@@ -48,26 +47,25 @@ export default function PrivacyPolicy() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.7 }}
       >
-        We never share your personal information with third parties. All data is stored securely
-        and used solely to improve your experience with our services.
+        We never share your personal information with third parties. All data is stored securely and used solely to improve your experience with our services.
       </motion.p>
 
       <motion.p
-        className="text-gray-400 mb-6"
+        className="text-gray-400 mb-6 flex items-center gap-2"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.9 }}
       >
-        For any privacy concerns, feel free to contact us at{" "}
+        <Mail className="w-5 h-5 text-accent" />
+        For any privacy concerns, contact us at{" "}
         <a
           href="https://mail.google.com/mail/?view=cm&to=info@murulirajclicks.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-accent underline"
+          className="text-accent underline hover:text-accent/80 transition"
         >
           info@murulirajclicks.com
         </a>
-
       </motion.p>
 
       <motion.p

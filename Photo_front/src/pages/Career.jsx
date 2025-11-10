@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Mail } from "lucide-react";
 
 export default function Career() {
   const roles = [
@@ -43,22 +44,22 @@ export default function Career() {
       </motion.div>
 
       <motion.p
-        className="text-gray-400 mb-6"
+        className="text-gray-400 mb-6 flex items-center gap-2"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.7 }}
       >
+        <Mail className="w-5 h-5 text-accent" />
         Send your updated resume and portfolio to{" "}
         <a
           href="https://mail.google.com/mail/?view=cm&to=info@murulirajclicks.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-accent underline"
+          className="text-accent underline hover:text-accent/80 transition"
         >
           info@murulirajclicks.com
-        </a>
-
-        {" "}and we’ll get back to you if you’re a fit.
+        </a>{" "}
+        and we’ll get back to you if you’re a fit.
       </motion.p>
 
       <motion.p

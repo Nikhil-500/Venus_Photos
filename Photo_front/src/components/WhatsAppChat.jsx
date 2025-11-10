@@ -1,30 +1,14 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaWhatsapp, FaTimes } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
 
 export default function WhatsAppChat() {
   const [open, setOpen] = useState(false);
   const [showGreeting, setShowGreeting] = useState(false);
 
-  const whatsappNumber = "+919480661565"; // 🔹 Replace with your number
+  const whatsappNumber = "+919480661565";
   const baseLink = `https://api.whatsapp.com/send?phone=${whatsappNumber.replace("+", "")}`;
 
-  const quickMessages = [
-    {
-      text: "Hi! I’d like to know more about your Wedding Packages 💍",
-      label: "Wedding Packages",
-    },
-    {
-      text: "Hello! Can I get details about your Architecture Photography 🏛️?",
-      label: "Architecture",
-    },
-    {
-      text: "Hey! I want to book a photo session 📸",
-      label: "Book a Session",
-    },
-  ];
-
-  // 🕒 Show greeting after 3 seconds
   useEffect(() => {
     const timer = setTimeout(() => setShowGreeting(true), 3000);
     return () => clearTimeout(timer);
@@ -37,14 +21,18 @@ export default function WhatsAppChat() {
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-row-reverse items-center gap-3">
-      {/* --- Floating WhatsApp Button --- */}
+      {/* --- Floating WhatsApp Button with Image --- */}
       <motion.button
         onClick={handleOpen}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
-        className="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-xl flex items-center justify-center"
+        className="w-14 h-14 rounded-full shadow-xl overflow-hidden flex items-center justify-center"
       >
-        <FaWhatsapp className="text-3xl" />
+        <img
+          src="https://i.ibb.co/3z8gWqf/whatsapp-icon.png"
+          alt="WhatsApp"
+          className="w-full h-full object-cover"
+        />
       </motion.button>
 
       {/* --- Side Greeting Bubble --- */}
@@ -93,20 +81,15 @@ export default function WhatsAppChat() {
               </button>
             </div>
 
-            {/* Quick Message Options */}
-            <div className="space-y-2">
-              {quickMessages.map((msg, i) => (
-                <a
-                  key={i}
-                  href={`${baseLink}&text=${encodeURIComponent(msg.text)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block bg-green-100 hover:bg-green-200 text-green-700 px-3 py-2 rounded-lg text-sm font-medium transition"
-                >
-                  {msg.label}
-                </a>
-              ))}
-            </div>
+            {/* Message Prompt */}
+            <a
+              href={baseLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block bg-green-100 hover:bg-green-200 text-green-700 px-3 py-2 rounded-lg text-sm font-medium text-center transition"
+            >
+              Start WhatsApp Chat
+            </a>
 
             <p className="text-[11px] text-gray-500 mt-3 text-center">
               Chat via WhatsApp — response within minutes!

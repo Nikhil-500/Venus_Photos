@@ -26,33 +26,66 @@ export default function Navbar() {
         { name: "Maternity & Newborn Package", to: "/packages/maternity-newborn" },
       ],
     },
-
     { name: "Contact", to: "/contact" },
     { name: "Book Now", to: "/booknow" },
   ];
 
+  // Scroll effect
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close mobile menu when navigation changes
   useEffect(() => {
     setOpen(false);
     setActiveDropdown(null);
   }, [location.pathname]);
+
+  // ✅ Add Google Translate
+  useEffect(() => {
+    const addGoogleTranslate = () => {
+      if (!document.querySelector("#google-translate-script")) {
+        const script = document.createElement("script");
+        script.id = "google-translate-script";
+        script.src =
+          "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+        document.body.appendChild(script);
+      }
+
+      window.googleTranslateElementInit = () => {
+        new window.google.translate.TranslateElement(
+          {
+            pageLanguage: "en",
+            includedLanguages: "en,hi,kn,ml,ta,te,fr,de,es",
+            layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
+          },
+          "google_translate_element"
+        );
+      };
+    };
+
+    addGoogleTranslate();
+  }, []);
 
   return (
     <motion.nav
       initial={{ y: -60, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed w-full top-0 left-0 z-50 transition-all duration-500 ${scrolled ? "bg-black/80 backdrop-blur-md shadow-md" : "bg-transparent"
-        }`}
+      className={`fixed w-full top-0 left-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? "bg-black/80 backdrop-blur-md shadow-md"
+          : "bg-transparent"
+      }`}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-3 text-xl md:text-2xl font-heading tracking-wider group">
+        <Link
+          to="/"
+          className="flex items-center gap-3 text-xl md:text-2xl font-heading tracking-wider group"
+        >
           <motion.img
             src={logo}
             alt="Muruliraj Photography Logo"
@@ -63,8 +96,8 @@ export default function Navbar() {
           </span>
         </Link>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-8 text-[15px] font-medium">
+        {/* ✅ Desktop Menu + Google Translate */}
+        <div className="hidden md:flex items-center space-x-8 text-[15px] font-medium">
           {navItems.map((item) => (
             <div
               key={item.name}
@@ -74,18 +107,20 @@ export default function Navbar() {
             >
               <Link
                 to={item.to || "#"}
-                className={`flex items-center gap-1 transition duration-200 ${location.pathname === item.to ||
-                    location.pathname.startsWith(item.to + "/")
+                className={`flex items-center gap-1 transition duration-200 ${
+                  location.pathname === item.to ||
+                  location.pathname.startsWith(item.to + "/")
                     ? "text-purple-400"
                     : "text-gray-200 hover:text-purple-400"
-                  }`}
+                }`}
               >
                 {item.name}
                 {item.dropdown && (
                   <ChevronDown
                     size={16}
-                    className={`transition-transform ${activeDropdown === item.name ? "rotate-180" : ""
-                      }`}
+                    className={`transition-transform ${
+                      activeDropdown === item.name ? "rotate-180" : ""
+                    }`}
                   />
                 )}
               </Link>
@@ -115,6 +150,14 @@ export default function Navbar() {
               )}
             </div>
           ))}
+
+          {/* 🌐 Google Translate Widget */}
+          <div className="ml-4 flex items-center">
+            <div
+              id="google_translate_element"
+              className="bg-gray-900/60 border border-purple-700/30 rounded-lg px-2 py-1 text-sm"
+            ></div>
+          </div>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -149,7 +192,10 @@ export default function Navbar() {
                   Muruliraj Photography
                 </h1>
               </div>
-              <button onClick={() => setOpen(false)} className="text-purple-400 hover:text-purple-600">
+              <button
+                onClick={() => setOpen(false)}
+                className="text-purple-400 hover:text-purple-600"
+              >
                 <X size={26} />
               </button>
             </div>
@@ -161,13 +207,16 @@ export default function Navbar() {
                   <button
                     onClick={() =>
                       item.dropdown
-                        ? setActiveDropdown(activeDropdown === item.name ? null : item.name)
+                        ? setActiveDropdown(
+                            activeDropdown === item.name ? null : item.name
+                          )
                         : setOpen(false)
                     }
-                    className={`w-full flex justify-between items-center text-[16px] font-medium py-2 border-b border-purple-800/30 ${location.pathname === item.to
+                    className={`w-full flex justify-between items-center text-[16px] font-medium py-2 border-b border-purple-800/30 ${
+                      location.pathname === item.to
                         ? "text-purple-400"
                         : "text-gray-200 hover:text-purple-400"
-                      }`}
+                    }`}
                   >
                     <Link to={item.to || "#"} className="flex-1 text-left">
                       {item.name}
@@ -175,10 +224,11 @@ export default function Navbar() {
                     {item.dropdown && (
                       <ChevronRight
                         size={18}
-                        className={`transition-transform ${activeDropdown === item.name
+                        className={`transition-transform ${
+                          activeDropdown === item.name
                             ? "rotate-90 text-purple-400"
                             : "text-purple-400/60"
-                          }`}
+                        }`}
                       />
                     )}
                   </button>
@@ -210,7 +260,7 @@ export default function Navbar() {
               ))}
             </div>
 
-            {/* Footer Buttons */}
+            {/* Footer Buttons + Google Translate */}
             <div className="px-6 py-5 border-t border-purple-800/40 space-y-3">
               <Link
                 to="/contact"
@@ -226,6 +276,12 @@ export default function Navbar() {
               >
                 Book Now
               </Link>
+
+              {/* 🌐 Google Translate Widget (Mobile) */}
+              <div
+                id="google_translate_element_mobile"
+                className="mt-6 text-center bg-gray-900/80 border border-purple-700/30 rounded-lg p-3"
+              ></div>
             </div>
           </motion.div>
         )}

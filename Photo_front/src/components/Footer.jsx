@@ -8,6 +8,7 @@ import {
   FaBehance,
   FaYoutube,
   FaGoogle,
+  FaEnvelope, // ✅ Added Mail Icon
 } from "react-icons/fa";
 
 export default function Footer() {
@@ -48,20 +49,22 @@ export default function Footer() {
             elegance, precision, and emotional depth with creative excellence.
           </p>
 
-          <div className="mt-3">
+          <div className="mt-3 space-y-1">
             <a
               href={`tel:+91${whatsappNumber}`}
               className="flex items-center justify-center md:justify-start gap-2 text-purple-400 font-semibold hover:text-purple-300"
             >
               <span className="text-lg">📞</span> +91 {whatsappNumber}
             </a>
+
+            {/* ✅ Email with Icon */}
             <a
-              href="https://mail.google.com/mail/?view=cm&to=info@murulirajclicks.com"
+              href="mailto:info@murulirajclicks.com"
+              className="flex items-center justify-center md:justify-start gap-2 text-sm text-purple-400 hover:text-purple-300"
               target="_blank"
               rel="noopener noreferrer"
-              className="block text-sm text-purple-400 hover:text-purple-300"
             >
-              info@murulirajclicks.com
+              <FaEnvelope className="text-base" /> info@murulirajclicks.com
             </a>
           </div>
 
@@ -126,7 +129,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* --- Packages --- */}
+        {/* --- Packages Section --- */}
         <div>
           <h4 className="text-purple-400 font-semibold text-lg mb-3 uppercase">
             Packages
@@ -143,34 +146,22 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link
-                to="/packages/model-fashion"
-                className="hover:text-purple-400"
-              >
+              <Link to="/packages/model-fashion" className="hover:text-purple-400">
                 Model & Fashion
               </Link>
             </li>
             <li>
-              <Link
-                to="/packages/traditional-events"
-                className="hover:text-purple-400"
-              >
+              <Link to="/packages/traditional-events" className="hover:text-purple-400">
                 Traditional Events
               </Link>
             </li>
             <li>
-              <Link
-                to="/packages/school-promotion"
-                className="hover:text-purple-400"
-              >
+              <Link to="/packages/school-promotion" className="hover:text-purple-400">
                 School Promotion
               </Link>
             </li>
             <li>
-              <Link
-                to="/packages/maternity-newborn"
-                className="hover:text-purple-400"
-              >
+              <Link to="/packages/maternity-newborn" className="hover:text-purple-400">
                 Maternity & Newborn
               </Link>
             </li>
@@ -184,10 +175,7 @@ export default function Footer() {
           </h4>
           <ul className="space-y-2 text-gray-300 text-sm">
             <li>
-              <Link
-                to="/services/architecture"
-                className="hover:text-purple-400"
-              >
+              <Link to="/services/architecture" className="hover:text-purple-400">
                 Architecture
               </Link>
             </li>
@@ -197,34 +185,22 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link
-                to="/services/political-promotions"
-                className="hover:text-purple-400"
-              >
+              <Link to="/services/political-promotions" className="hover:text-purple-400">
                 Political Promotions
               </Link>
             </li>
             <li>
-              <Link
-                to="/services/government-projects"
-                className="hover:text-purple-400"
-              >
+              <Link to="/services/government-projects" className="hover:text-purple-400">
                 Government Projects
               </Link>
             </li>
             <li>
-              <Link
-                to="/services/corporate-promotion"
-                className="hover:text-purple-400"
-              >
+              <Link to="/services/corporate-promotion" className="hover:text-purple-400">
                 Corporate Promotions
               </Link>
             </li>
             <li>
-              <Link
-                to="/services/school-promotion"
-                className="hover:text-purple-400"
-              >
+              <Link to="/services/school-promotion" className="hover:text-purple-400">
                 School Promotion
               </Link>
             </li>
@@ -252,21 +228,13 @@ export default function Footer() {
 
       {/* --- Bottom Links --- */}
       <div className="mt-10 text-center text-purple-400 font-semibold space-x-2 text-sm">
-        <Link to="/career" className="hover:text-white">
-          Career
-        </Link>
+        <Link to="/career" className="hover:text-white">Career</Link>
         <span>||</span>
-        <Link to="/faq" className="hover:text-white">
-          FAQ
-        </Link>
+        <Link to="/faq" className="hover:text-white">FAQ</Link>
         <span>||</span>
-        <Link to="/privacy-policy" className="hover:text-white">
-          Privacy Policy
-        </Link>
+        <Link to="/privacy-policy" className="hover:text-white">Privacy Policy</Link>
         <span>||</span>
-        <Link to="/blog" className="hover:text-white">
-          Blog
-        </Link>
+        <Link to="/blog" className="hover:text-white">Blog</Link>
       </div>
 
       {/* --- Copyright --- */}

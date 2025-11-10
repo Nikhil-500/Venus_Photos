@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { FaEnvelope } from "react-icons/fa"; // ✅ Added mail icon
 import dr from "../assets/dr.jpg";
 import tr from "../assets/tr.jpg";
 
@@ -168,10 +169,11 @@ export default function Contact() {
                   type="submit"
                   whileTap={{ scale: 0.95 }}
                   disabled={status.loading}
-                  className={`py-3 px-6 rounded-lg font-semibold transition duration-300 ${status.loading
+                  className={`py-3 px-6 rounded-lg font-semibold transition duration-300 ${
+                    status.loading
                       ? "bg-gray-600 cursor-not-allowed"
                       : "bg-purple-500 hover:bg-purple-400 text-black"
-                    }`}
+                  }`}
                 >
                   {status.loading ? "Sending..." : "Send Message"}
                 </motion.button>
@@ -230,8 +232,9 @@ export default function Contact() {
                   href="https://mail.google.com/mail/?view=cm&to=info@murulirajclicks.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block text-sm text-purple-400 hover:text-purple-300"
+                  className="flex items-center gap-2 text-sm text-purple-400 hover:text-purple-300"
                 >
+                  <FaEnvelope className="text-purple-400" /> {/* ✅ Mail Icon */}
                   info@murulirajclicks.com
                 </a>
               </p>

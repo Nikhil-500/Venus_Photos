@@ -7,6 +7,7 @@ export default function BookForm({ selectedPackage = "" }) {
     email: "",
     phone: "",
     venue: "",
+    date: "", // ✅ added date field
     service: "",
     package: "",
     message: "",
@@ -34,7 +35,7 @@ export default function BookForm({ selectedPackage = "" }) {
   // ✅ WhatsApp message generator (for fallback/manual open)
   const generateWhatsAppMessage = () => {
     const whatsappNumber = "+91XXXXXXXXXX"; // ← Replace with your number
-    const message = `📸 *New Booking Request!*\n\n👤 Name: ${formData.name}\n📧 Email: ${formData.email}\n📞 Phone: ${formData.phone}\n🏛️ Venue: ${formData.venue}\n🧾 Service: ${formData.service}\n💎 Package: ${formData.package}\n💬 Message: ${formData.message || "N/A"}`;
+    const message = `📸 *New Booking Request!*\n\n👤 Name: ${formData.name}\n📧 Email: ${formData.email}\n📞 Phone: ${formData.phone}\n🏛️ Event Place: ${formData.venue}\n📅 Date: ${formData.date}\n🧾 Service: ${formData.service}\n💎 Package: ${formData.package}\n💬 Message: ${formData.message || "N/A"}`;
     return `https://api.whatsapp.com/send?phone=${whatsappNumber.replace("+", "")}&text=${encodeURIComponent(message)}`;
   };
 
@@ -70,6 +71,7 @@ export default function BookForm({ selectedPackage = "" }) {
             email: formData.email,
             phone: formData.phone,
             venue: formData.venue,
+            date: formData.date,
             service: formData.service,
             packageType: formData.package,
             message: formData.message,
@@ -86,6 +88,7 @@ export default function BookForm({ selectedPackage = "" }) {
         email: "",
         phone: "",
         venue: "",
+        date: "",
         service: "",
         package: "",
         message: "",
@@ -121,21 +124,43 @@ export default function BookForm({ selectedPackage = "" }) {
 
       {/* --- Form Inputs --- */}
       <div className="grid md:grid-cols-2 gap-6">
-        <input type="text" name="name" value={formData.name} onChange={handleChange}
-          placeholder="Your Name" required
-          className="p-3 rounded-md bg-zinc-800 text-white w-full focus:ring-2 focus:ring-orange-500 outline-none" />
-
-        <input type="email" name="email" value={formData.email} onChange={handleChange}
-          placeholder="Email" required
-          className="p-3 rounded-md bg-zinc-800 text-white w-full focus:ring-2 focus:ring-orange-500 outline-none" />
-
-        <input type="tel" name="phone" value={formData.phone} onChange={handleChange}
-          placeholder="Phone Number" required
-          className="p-3 rounded-md bg-zinc-800 text-white w-full focus:ring-2 focus:ring-orange-500 outline-none" />
-
-        <select name="service" value={formData.service} onChange={handleChange}
+        <input
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          placeholder="Your Name"
           required
-          className="p-3 rounded-md bg-zinc-800 text-white w-full focus:ring-2 focus:ring-orange-500 outline-none">
+          className="p-3 rounded-md bg-zinc-800 text-white w-full focus:ring-2 focus:ring-orange-500 outline-none"
+        />
+
+        <input
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          placeholder="Email"
+          required
+          className="p-3 rounded-md bg-zinc-800 text-white w-full focus:ring-2 focus:ring-orange-500 outline-none"
+        />
+
+        <input
+          type="tel"
+          name="phone"
+          value={formData.phone}
+          onChange={handleChange}
+          placeholder="Phone Number"
+          required
+          className="p-3 rounded-md bg-zinc-800 text-white w-full focus:ring-2 focus:ring-orange-500 outline-none"
+        />
+
+        <select
+          name="service"
+          value={formData.service}
+          onChange={handleChange}
+          required
+          className="p-3 rounded-md bg-zinc-800 text-white w-full focus:ring-2 focus:ring-orange-500 outline-none"
+        >
           <option value="">-- Select Service --</option>
           <option>Architecture Photography</option>
           <option>Wedding Photography</option>
@@ -148,30 +173,66 @@ export default function BookForm({ selectedPackage = "" }) {
           <option>Newborn and Toddler</option>
         </select>
 
-        <input type="text" name="venue" value={formData.venue} onChange={handleChange}
-          placeholder="Venue (e.g., Kushalnagar Convention Hall)" required
-          className="p-3 rounded-md bg-zinc-800 text-white w-full focus:ring-2 focus:ring-orange-500 outline-none md:col-span-2" />
+        {/* ✅ Venue + Date Picker side by side */}
+        <div className="grid grid-cols-2 gap-4 md:col-span-2">
+          <input
+            type="text"
+            name="venue"
+            value={formData.venue}
+            onChange={handleChange}
+            placeholder="Event Place"
+            required
+            className="p-3 rounded-md bg-zinc-800 text-white w-full focus:ring-2 focus:ring-orange-500 outline-none"
+          />
 
-        <input type="text" name="package" value={formData.package} onChange={handleChange}
-          placeholder="Package (e.g., Gold Wedding)" disabled={!!selectedPackage}
+          <input
+            type="date"
+            name="date"
+            value={formData.date}
+            onChange={handleChange}
+            required
+            className="p-3 rounded-md bg-zinc-800 text-white w-full focus:ring-2 focus:ring-orange-500 outline-none"
+          />
+        </div>
+
+        <input
+          type="text"
+          name="package"
+          value={formData.package}
+          onChange={handleChange}
+          placeholder="Package (e.g., Gold Wedding)"
+          disabled={!!selectedPackage}
           className={`p-3 rounded-md bg-zinc-800 text-white w-full focus:ring-2 focus:ring-orange-500 outline-none md:col-span-2 ${
             selectedPackage ? "opacity-70 cursor-not-allowed" : ""
-          }`} />
+          }`}
+        />
       </div>
 
-      <textarea name="message" value={formData.message} onChange={handleChange}
-        placeholder="Message (optional)" rows="4"
-        className="w-full p-3 rounded-md bg-zinc-800 text-white focus:ring-2 focus:ring-orange-500 outline-none" />
+      <textarea
+        name="message"
+        value={formData.message}
+        onChange={handleChange}
+        placeholder="Message (optional)"
+        rows="4"
+        className="w-full p-3 rounded-md bg-zinc-800 text-white focus:ring-2 focus:ring-orange-500 outline-none"
+      />
 
-      <button type="submit" disabled={status.loading}
+      <button
+        type="submit"
+        disabled={status.loading}
         className={`${
           status.loading ? "bg-gray-500 cursor-not-allowed" : "bg-orange-600 hover:bg-orange-700"
-        } text-white px-6 py-3 rounded-lg font-semibold transition w-full`}>
+        } text-white px-6 py-3 rounded-lg font-semibold transition w-full`}
+      >
         {status.loading ? "Sending..." : "Submit Request"}
       </button>
 
-      {status.success && <p className="text-green-400 text-center font-medium mt-2">{status.success}</p>}
-      {status.error && <p className="text-red-400 text-center font-medium mt-2">{status.error}</p>}
+      {status.success && (
+        <p className="text-green-400 text-center font-medium mt-2">{status.success}</p>
+      )}
+      {status.error && (
+        <p className="text-red-400 text-center font-medium mt-2">{status.error}</p>
+      )}
     </motion.form>
   );
 }
