@@ -46,7 +46,7 @@ export default function BookForm({ selectedPackage = "" }) {
     try {
       // Step 1️⃣: Send to backend contact route (email, database, etc.)
       const res = await fetch(
-        `${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/contact`,
+        `${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/booking`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
