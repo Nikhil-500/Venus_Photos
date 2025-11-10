@@ -37,10 +37,10 @@ export const handleBooking = async (req, res) => {
 `;
 
     // ✅ Send Email
-    await sendEmail("niks500500@gmail.com", "New Booking Inquiry", msgText);
+    await sendEmail("photos5224@gmail.com", "New Booking Inquiry", msgText);
 
     // ✅ Send WhatsApp
-    await sendWhatsAppMessage("+917904972933", msgText);
+    await sendWhatsAppMessage("+919480661565", msgText);
 
     res.status(200).json({
       success: true,

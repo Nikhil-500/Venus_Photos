@@ -32,8 +32,8 @@ export const handleContact = async (req, res) => {
 💬 *Message:* ${message}
 `;
 
-    await sendEmail("niks500500@gmail.com", "📩 New Contact Message", msgText);
-    await sendWhatsAppMessage("+917904972933", msgText);
+    await sendEmail("photos5224@gmail.com", "📩 New Contact Message", msgText);
+    await sendWhatsAppMessage("+919480661565", msgText);
 
     res.status(200).json({
       success: true,
