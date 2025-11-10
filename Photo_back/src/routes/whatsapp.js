@@ -16,6 +16,7 @@ router.post("/send", async (req, res) => {
       email,
       phone,
       venue,
+      date,
       service,
       packageType,
       message,
@@ -36,14 +37,15 @@ router.post("/send", async (req, res) => {
 👤 *Name:* ${name}
 📧 *Email:* ${email || "Not provided"}
 📞 *Phone:* ${phone}
-🏛️ *Venue:* ${venue || "Not specified"}
+🏛️ *Event Place:* ${venue || "Not specified"}
+📅 *Event Date:* ${date || "Not specified"}
 🧾 *Service:* ${service || "Not specified"}
 💎 *Package:* ${packageType || "Not specified"}
 💬 *Message:* ${message || "No message provided"}
 `;
 
     // ✅ Send to admin’s WhatsApp
-    const adminPhone = process.env.ADMIN_PHONE || "+91XXXXXXXXXX"; // replace if needed
+    const adminPhone = process.env.ADMIN_PHONE || "+91XXXXXXXXXX"; // replace with your number
     await sendWhatsAppMessage(adminPhone, msgText);
 
     res.status(200).json({

@@ -3,13 +3,13 @@ import { sendEmail } from "../utils/mailer.js";
 import { sendWhatsAppMessage } from "../utils/whatsapp.js";
 
 export const handleBooking = async (req, res) => {
-  const { name, email, phone, venue, service, package: selectedPackage, message } = req.body;
+  const { name, email, phone, venue, date, service, package: selectedPackage, message } = req.body;
 
   // ✅ Validate required fields
-  if (!name || !email || !phone || !venue || !service || !selectedPackage) {
+  if (!name || !email || !phone || !venue || !date || !service || !selectedPackage) {
     return res.status(400).json({
       success: false,
-      message: "All fields (name, email, phone, venue, service, package) are required.",
+      message: "All fields (name, email, phone, venue, date, service, package) are required.",
     });
   }
 
@@ -29,7 +29,8 @@ export const handleBooking = async (req, res) => {
 👤 *Name:* ${name}
 📧 *Email:* ${email}
 📞 *Phone:* ${phone}
-🏛️ *Venue:* ${venue}
+🏛️ *Event Place:* ${venue}
+📅 *Event Date:* ${date}
 🧾 *Service:* ${service}
 💎 *Package:* ${selectedPackage}
 💬 *Message:* ${message || "No additional message provided."}
