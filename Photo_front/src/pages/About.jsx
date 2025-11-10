@@ -12,13 +12,9 @@ import tt3 from "../assets/tt3.jpg";
 import tt4 from "../assets/tt4.jpg";
 import tt5 from "../assets/tt5.jpg";
 import bb from "../assets/bb.jpg";
+import logo from "../assets/logo.png";
 
-// ✅ Example team member images
-import team1 from "../assets/team1.jpg";
-import team2 from "../assets/team2.jpg";
-import team3 from "../assets/team3.jpg";
-
-// ✅ Counter Hook (triggers only once when visible)
+// ✅ Counter Hook
 function useCountAnimation(target, duration = 2000, trigger = false) {
   const [count, setCount] = useState(0);
   useEffect(() => {
@@ -49,36 +45,32 @@ export default function About() {
     return () => clearInterval(timer);
   }, []);
 
+  // ✅ Using same logo for all 3 members
   const teamMembers = [
-    { name: "Muruli Raj", role: "Founder & Lead Photographer", photo: team1 },
-    { name: "Divya", role: "Creative Director", photo: team2 },
-    { name: "Rahul", role: "Cinematographer", photo: team3 },
+    { name: "Muruli Raj", role: "Founder & Lead Photographer", photo: logo },
+    { name: "Divya", role: "Creative Director", photo: logo },
+    { name: "Rahul", role: "Cinematographer", photo: logo },
   ];
 
-  // ✅ Animated counter section trigger
   const countRef = useRef(null);
   const isInView = useInView(countRef, { once: true, margin: "-100px" });
 
   const reviews = useCountAnimation(1300, 2000, isInView);
   const events = useCountAnimation(5000, 2000, isInView);
   const years = useCountAnimation(7, 2000, isInView);
-  const projects = useCountAnimation(5000, 2000, isInView); // ✅ New counter
+  const projects = useCountAnimation(5000, 2000, isInView);
 
   return (
     <section className="relative bg-black text-white overflow-hidden">
-      {/* ✅ Fullscreen Background Image */}
+      {/* ✅ Background */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-fixed"
-        style={{
-          backgroundImage: `url(${bb})`,
-        }}
+        style={{ backgroundImage: `url(${bb})` }}
       ></div>
-
-      {/* ✅ Dark Overlay */}
       <div className="absolute inset-0 bg-black/75 backdrop-blur-[1px]" />
 
       <div className="relative z-10">
-        {/* ✅ Fullscreen Hero Slider */}
+        {/* ✅ Hero Slider */}
         <div className="relative w-screen h-screen overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.img
@@ -93,10 +85,8 @@ export default function About() {
             />
           </AnimatePresence>
 
-          {/* Overlay on Slider */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/70"></div>
 
-          {/* Slider Text */}
           <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
@@ -118,7 +108,7 @@ export default function About() {
           </div>
         </div>
 
-        {/* ✅ About Content Section */}
+        {/* ✅ About Section */}
         <AnimatedSection>
           <div className="relative py-16 max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -188,7 +178,7 @@ export default function About() {
               forever.”
             </motion.div>
 
-            {/* Team Section */}
+            {/* ✅ Team Section */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -227,7 +217,7 @@ export default function About() {
               </div>
             </motion.div>
 
-            {/* ✅ Counter Section (Now with Projects Delivered) */}
+            {/* ✅ Counter Section */}
             <motion.div
               ref={countRef}
               initial={{ opacity: 0, y: 60 }}
@@ -268,7 +258,6 @@ export default function About() {
           </div>
         </AnimatedSection>
 
-        {/* ✅ Clients Section */}
         <ClientsSection />
       </div>
     </section>
