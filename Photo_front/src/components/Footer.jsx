@@ -50,15 +50,13 @@ export default function Footer() {
 
           <div className="mt-3">
             <a
-              href={`https://wa.me/${whatsappNumber}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block text-purple-400 font-semibold hover:text-purple-300"
+              href={`tel:+91${whatsappNumber}`}
+              className="flex items-center justify-center md:justify-start gap-2 text-purple-400 font-semibold hover:text-purple-300"
             >
-              +91 {whatsappNumber}
+              <span className="text-lg">📞</span> +91 {whatsappNumber}
             </a>
             <a
-              href="mailto:info@murulirajclicks.com"
+              href="https://mail.google.com/mail/?view=cm&to=info@murulirajclicks.com"
               target="_blank"
               rel="noopener noreferrer"
               className="block text-sm text-purple-400 hover:text-purple-300"
@@ -200,7 +198,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                to="/services/political-promotions" 
+                to="/services/political-promotions"
                 className="hover:text-purple-400"
               >
                 Political Promotions
@@ -224,7 +222,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                to="/services/school-promotion" 
+                to="/services/school-promotion"
                 className="hover:text-purple-400"
               >
                 School Promotion

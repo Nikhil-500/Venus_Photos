@@ -59,9 +59,15 @@ export default function PrivacyPolicy() {
         transition={{ delay: 0.9 }}
       >
         For any privacy concerns, feel free to contact us at{" "}
-        <a href="mailto:info@murulirajclicks.com" className="text-accent underline">
+        <a
+          href="https://mail.google.com/mail/?view=cm&to=info@murulirajclicks.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-accent underline"
+        >
           info@murulirajclicks.com
-        </a>.
+        </a>
+
       </motion.p>
 
       <motion.p

@@ -49,9 +49,15 @@ export default function Career() {
         transition={{ delay: 0.7 }}
       >
         Send your updated resume and portfolio to{" "}
-        <a href="mailto:info@murulirajclicks.com" className="text-accent underline">
+        <a
+          href="https://mail.google.com/mail/?view=cm&to=info@murulirajclicks.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-accent underline"
+        >
           info@murulirajclicks.com
         </a>
+
         {" "}and we’ll get back to you if you’re a fit.
       </motion.p>
 

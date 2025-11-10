@@ -68,7 +68,7 @@ export default function Contact() {
 
   return (
     <section className="relative text-white overflow-hidden">
-      {/* ✅ Hero Section with Parallax tr.jpg */}
+      {/* ✅ Hero Section */}
       <div ref={ref} className="relative w-full h-[90vh] md:h-screen overflow-hidden">
         <motion.img
           src={tr}
@@ -98,7 +98,7 @@ export default function Contact() {
         </div>
       </div>
 
-      {/* ✅ Main Contact Section with dr.jpg Background */}
+      {/* ✅ Main Section */}
       <div
         className="relative py-24 overflow-hidden"
         style={{
@@ -108,12 +108,10 @@ export default function Contact() {
           backgroundAttachment: "fixed",
         }}
       >
-        {/* Overlay */}
         <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
 
-        {/* Main Layout */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 grid md:grid-cols-2 gap-12 items-start">
-          {/* --- Left: Contact Form --- */}
+          {/* --- Left: Form --- */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -170,11 +168,10 @@ export default function Contact() {
                   type="submit"
                   whileTap={{ scale: 0.95 }}
                   disabled={status.loading}
-                  className={`py-3 px-6 rounded-lg font-semibold transition duration-300 ${
-                    status.loading
+                  className={`py-3 px-6 rounded-lg font-semibold transition duration-300 ${status.loading
                       ? "bg-gray-600 cursor-not-allowed"
                       : "bg-purple-500 hover:bg-purple-400 text-black"
-                  }`}
+                    }`}
                 >
                   {status.loading ? "Sending..." : "Send Message"}
                 </motion.button>
@@ -212,8 +209,7 @@ export default function Contact() {
               ></iframe>
             </div>
 
-            <div className="h-6 bg-transparent" />
-
+            {/* ✅ Updated Contact Info Below Map */}
             <div className="p-6 md:p-8 text-right bg-black/70 border-t border-purple-400/20 rounded-b-2xl flex flex-col justify-center min-h-[180px]">
               <h3 className="text-2xl font-semibold text-purple-300 mb-3">
                 Muruli Raj Photography
@@ -222,8 +218,22 @@ export default function Contact() {
                 📍 Venkateshwara Badavane, Harangi Rd, Kushalnagar, Karnataka
                 571234
               </p>
-              <p className="text-gray-400">
-                📞 +91 9480661565 &nbsp; | &nbsp; ✉️ info@murulirajclicks.com
+              <p className="text-gray-400 flex justify-end items-center gap-2 flex-wrap">
+                <a
+                  href="tel:+919480661565"
+                  className="block text-sm text-purple-400 hover:text-purple-300"
+                >
+                  📞 +91 9480661565
+                </a>
+                <span className="hidden md:inline">|</span>
+                <a
+                  href="https://mail.google.com/mail/?view=cm&to=info@murulirajclicks.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-sm text-purple-400 hover:text-purple-300"
+                >
+                  info@murulirajclicks.com
+                </a>
               </p>
               <p className="text-gray-500 text-sm mt-1">Mon – Sat, 9 AM – 6 PM</p>
             </div>

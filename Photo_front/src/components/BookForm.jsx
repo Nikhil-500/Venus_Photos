@@ -138,14 +138,14 @@ export default function BookForm({ selectedPackage = "" }) {
           className="p-3 rounded-md bg-zinc-800 text-white w-full focus:ring-2 focus:ring-orange-500 outline-none">
           <option value="">-- Select Service --</option>
           <option>Architecture Photography</option>
-          <option>Bridal/Pre-Wedding/Wedding Photography</option>
-          <option>Political Promotion</option>
+          <option>Wedding Photography</option>
+          <option>Political Promotions</option>
           <option>Government Projects</option>
           <option>Corporate Promotions</option>
           <option>Traditional Events</option>
-          <option>Model and Fashion Photography</option>
+          <option>Fashion Photography</option>
           <option>School Promotions</option>
-          <option>Maternity, Newborn and Toddler</option>
+          <option>Newborn and Toddler</option>
         </select>
 
         <input type="text" name="venue" value={formData.venue} onChange={handleChange}
