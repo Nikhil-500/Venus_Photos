@@ -1,32 +1,31 @@
 // src/utils/mailer.js
-import nodemailer from "nodemailer";
+import axios from "axios";
 import dotenv from "dotenv";
-
 dotenv.config();
-
-// ✅ Create transporter using Brevo SMTP
-const transporter = nodemailer.createTransport({
-  host: "smtp-relay.brevo.com", // Brevo SMTP host
-  port: 587, // Use port 587 for TLS
-  auth: {
-    user: process.env.BREVO_EMAIL,     // your verified sender email (e.g. yourname@gmail.com)
-    pass: process.env.BREVO_SMTP_KEY,  // your Brevo SMTP key
-  },
-});
 
 export async function sendEmail(to, subject, text) {
   try {
-    const mailOptions = {
-      from: `"Orion Neststay" <${process.env.BREVO_EMAIL}>`, // 👈 looks professional
-      to,
-      subject,
-      text,
-    };
+    const response = await axios.post(
+      "https://api.brevo.com/v3/smtp/email",
+      {
+        sender: { name: "Muruli Raj Photography", email: process.env.BREVO_EMAIL },
+        to: [{ email: to }],
+        subject,
+        textContent: text,
+      },
+      {
+        headers: {
+          "accept": "application/json",
+          "api-key": process.env.BREVO_API_KEY, // 🔑 Your Brevo API key (not SMTP key)
+          "content-type": "application/json",
+        },
+      }
+    );
 
-    const info = await transporter.sendMail(mailOptions);
-    console.log("✅ Email sent successfully:", info.messageId);
+    console.log("✅ Email sent successfully:", response.data);
+    return response.data;
   } catch (error) {
-    console.error("❌ Email send failed:", error.message);
+    console.error("❌ Email send failed:", error.response?.data || error.message);
     throw new Error("Email send failed");
   }
 }
