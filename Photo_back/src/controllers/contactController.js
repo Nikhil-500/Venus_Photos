@@ -2,15 +2,15 @@
 import { sendEmail } from "../utils/mailer.js";
 import { sendWhatsAppMessage } from "../utils/whatsapp.js";
 
-// ✅ Handle booking/contact form
+// ✅ Handle simple contact form
 export const handleContact = async (req, res) => {
-  const { name, email, phone, service, venue, package: packageType, message } = req.body;
+  const { name, email, phone, message } = req.body;
 
   // ✅ Validate required fields
-  if (!name || !email || !phone || !service || !venue) {
+  if (!name || !email || !phone || !message) {
     return res.status(400).json({
       success: false,
-      message: "Please fill in all required fields: name, email, phone, service, and venue.",
+      message: "All fields (name, email, phone, message) are required.",
     });
   }
 
@@ -23,32 +23,24 @@ export const handleContact = async (req, res) => {
   }
 
   try {
-    // ✅ Message template (used for both Email + WhatsApp)
     const msgText = `
-📸 *New Booking Request!*
+📩 *New Contact Message!*
 
 👤 *Name:* ${name}
 📧 *Email:* ${email}
 📞 *Phone:* ${phone}
-🏷️ *Service:* ${service}
-📍 *Venue:* ${venue}
-🎁 *Package:* ${packageType || "N/A"}
-💬 *Message:* ${message || "N/A"}
+💬 *Message:* ${message}
 `;
 
-    // ✅ Send Email to Admin
-    await sendEmail("niks500500@gmail.com", "📸 New Booking Request", msgText);
-
-    // ✅ Send WhatsApp message to Admin (optional)
+    await sendEmail("niks500500@gmail.com", "📩 New Contact Message", msgText);
     await sendWhatsAppMessage("+917904972933", msgText);
 
-    // ✅ Success response
     res.status(200).json({
       success: true,
-      message: "✅ Booking request sent successfully via Email and WhatsApp!",
+      message: "✅ Message sent successfully via Email and WhatsApp!",
     });
   } catch (error) {
-    console.error("❌ Booking form error:", error);
+    console.error("❌ Contact form error:", error);
     res.status(500).json({
       success: false,
       message: "Server error — please try again later.",
